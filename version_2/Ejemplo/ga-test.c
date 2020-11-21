@@ -3,7 +3,7 @@
 |
 | Genetic Algorithm Test Program 
 ============================================================================*/
-#include "ga.h"
+#include "../libGA_ALL/ga.h"
 
 int obj_fun();    /*--- Forward declaration ---*/
 
@@ -16,7 +16,7 @@ int main()
    int i;
 
    /*--- Initialize the genetic algorithm ---*/
-   ga_info = GA_config("GAconfig_ejemplo_bits", obj_fun);
+   ga_info = GA_config("../Archivos_Config/GAconfig_ejemplo_bits", obj_fun);
 
    /*--- Run the GA ---*/
    GA_run(ga_info);

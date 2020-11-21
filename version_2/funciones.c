@@ -16,15 +16,17 @@ int read_instance();
 
 // PONER ESTO EN EL MAIN 
 
+int main() {
 
-// Rellena la matriz "graph" con los datos del fichero
-// Tb. inicializa nnodes y nedges
-read_instance("Toy4.clq.txt");  //  Nombre de la instancia
+	// Rellena la matriz "graph" con los datos del fichero
+	// Tb. inicializa nnodes y nedges
+	read_instance("Toy4.clq.txt");  //  Nombre de la instancia
   
-// IMPORTANTE: se puede cambiar la longitud del chromosoma con la
-//             info del fichero (despues de llamar GA_config(...)  )
-ga_info->chrom_len = nnodes;
+	// IMPORTANTE: se puede cambiar la longitud del chromosoma con la
+	//             info del fichero (despues de llamar GA_config(...)  )
+	ga_info->chrom_len = nnodes;
 
+}
 
 /******************************************************************/
 /******************************************************************/
