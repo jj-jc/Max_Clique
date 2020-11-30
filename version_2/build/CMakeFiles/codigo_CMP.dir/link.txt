@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/codigo_CMP.dir/codigo_CMP.c.o CMakeFiles/codigo_CMP.dir/libGA_ALL/libgaALL.c.o  -o codigo_CMP  -lm 

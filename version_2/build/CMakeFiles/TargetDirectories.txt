@@ -1,3 +1,0 @@
-/home/juanjo/practica2_ia_cmp/version_2/build/CMakeFiles/rebuild_cache.dir
-/home/juanjo/practica2_ia_cmp/version_2/build/CMakeFiles/edit_cache.dir
-/home/juanjo/practica2_ia_cmp/version_2/build/CMakeFiles/codigo_CMP.dir

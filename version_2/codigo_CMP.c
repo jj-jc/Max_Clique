@@ -11,25 +11,24 @@
 /* Includes */
 
 #include "libGA_ALL/ga.h"
-#define PATH  "/home/juanjo/practica2_ia_cmp/version_2/Archivos_Config/GAconfig_ejemplo_bits"
+#define Configuration_PATH  "/home/juanjo/practica2_ia_cmp/version_2/Archivos_Config/GAconfig_ejemplo_bits"
+#define Instances_PATH "/home/juanjo/practica2_ia_cmp/version_2/Instances/Toy4.clq.txt"
 /* Declaración de funciones */
 #define N 100
 int obj_fun();
 int read_instance();
 void print_graph();
-// int *graph[4];
+int **graph;
 /* Función principal */
 
 int main() 
 {
-  //printf("hola mundo");
-  // graph=read_instance("Instances/Toy4.clq.txt");  //  Nombre de la instancia
-  // printf(graph[1][1]);
-  // print_graph(graph);
+  graph=read_instance(Instances_PATH);  //  Nombre de la instancia
+  // printf(graph);
   GA_Info_Ptr ga_info;
   int i;
   /* Inicializar el agoritmo genético */
-  ga_info = GA_config(PATH, obj_fun);
+  ga_info = GA_config(Configuration_PATH, obj_fun);
 
   /* Ejecutar el algoritmo genético */
   GA_run(ga_info);
