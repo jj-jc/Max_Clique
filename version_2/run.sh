@@ -3,7 +3,7 @@
 prog=GA-test
 conf=GAconfig_ejemplo_perms
 
- date > results.txt
+date > results.txt
 
 for i in  1 2 3 4 5 9 8 8 9 10
 do
