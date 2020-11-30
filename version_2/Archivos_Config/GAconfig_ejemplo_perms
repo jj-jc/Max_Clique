@@ -36,9 +36,9 @@
 #
 # DEFAULT: int_perm
 #-----------------------------------------------------------------------------
-#datatype bit
+datatype bit
 # datatype int
- datatype int_perm
+#datatype int_perm
 # datatype real
 
 #-----------------------------------------------------------------------------

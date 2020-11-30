@@ -71,7 +71,7 @@ datatype bit
 #
 # DEFAULT: chrom_len 10
 #-----------------------------------------------------------------------------
-chrom_len 10
+chrom_len N
 
 #-----------------------------------------------------------------------------
 # Pool size, needed when "initpool random" selected
