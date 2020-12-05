@@ -21,7 +21,7 @@
 #
 # DEFAULT: rand_seed 1
 #-----------------------------------------------------------------------------
-  rand_seed my_pid
+# rand_seed my_pid
 # rand_seed 1
 
 #-----------------------------------------------------------------------------
@@ -82,7 +82,7 @@ chrom_len 64
 #
 # DEFAULT: 100
 #-----------------------------------------------------------------------------
-pool_size 200
+pool_size 100
 
 #-----------------------------------------------------------------------------
 # When to stop the GA
@@ -108,7 +108,7 @@ pool_size 200
 #-----------------------------------------------------------------------------
 # stop_after convergence
 # stop_after 500
-stop_after 500 use_convergence
+stop_after 5000 use_convergence
 # stop_after 50000 ignore_convergence
 
 #-----------------------------------------------------------------------------
@@ -200,8 +200,8 @@ stop_after 500 use_convergence
 #
 # DEFAULT: crossover order1
 #-----------------------------------------------------------------------------
-crossover simple
-# crossover uniform
+# crossover simple
+ crossover uniform
 # crossover order1            # use ony with integer permutations
 # crossover order2            # use ony with integer permutations
 # crossover position          # use ony with integer permutations
@@ -221,7 +221,7 @@ crossover simple
 #
 # DEFAULT: x_rate 1.0
 #-----------------------------------------------------------------------------
-x_rate 0.6
+x_rate 0.9
 
 #-----------------------------------------------------------------------------
 # Mutation method:
@@ -254,7 +254,7 @@ mutation simple_invert      # use only with bits
 #
 # DEFAULT: mu_rate 0.0
 #-----------------------------------------------------------------------------
-mu_rate 0.4
+mu_rate 0.2
 
 #-----------------------------------------------------------------------------
 # Replacement method:
@@ -321,7 +321,7 @@ objective maximize
 #-----------------------------------------------------------------------------
 # rp_type none
 #rp_type minimal
-rp_type short
+# rp_type short
 #rp_type long
 
 #-----------------------------------------------------------------------------
