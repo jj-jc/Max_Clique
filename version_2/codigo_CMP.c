@@ -40,6 +40,11 @@ int main() {
    int i;
 
    /* Se rellena la matriz "graph" con los datos del fichero y se inicializa nnodes y nedges */
+   // read_instance("Instances/keller4.clq.txt");  //  Se pasa el nombre del archivo de la instancia
+   // read_instance("Instances/san200_0.7_1.clq.txt");  //  Se pasa el nombre del archivo de la instancia
+   // read_instance("Instances/p_hat500-2.clq.txt");  //  Se pasa el nombre del archivo de la instancia
+   // read_instance("Instances/p_hat500-1.clq.txt");  //  Se pasa el nombre del archivo de la instancia
+   // read_instance("Instances/p_hat300-2.clq.txt");  //  Se pasa el nombre del archivo de la instancia
    read_instance("Instances/p_hat300-1.clq.txt");  //  Se pasa el nombre del archivo de la instancia
    // read_instance("Instances/johnson8-4-4.clq.txt");  //  Se pasa el nombre del archivo de la instancia
    // read_instance("Instances/johnson8-2-4.clq.txt");  //  Se pasa el nombre del archivo de la instancia
@@ -48,7 +53,11 @@ int main() {
    // read_instance("Instances/Toy4.clq.txt");
 
    /* Se inicializa el agoritmo genético */
-
+   // ga_info = GA_config("Archivos_Config/GAconfig_keller4", obj_fun_aristas);
+   // ga_info = GA_config("Archivos_Config/GAconfig_p_san200_0.7_1", obj_fun_aristas);
+   // ga_info = GA_config("Archivos_Config/GAconfig_p_hat500-2", obj_fun_aristas);
+   // ga_info = GA_config("Archivos_Config/GAconfig_p_hat500-1", obj_fun_aristas);
+   // ga_info = GA_config("Archivos_Config/GAconfig_p_hat300-2", obj_fun_aristas);
    ga_info = GA_config("Archivos_Config/GAconfig_p_hat300-1", obj_fun_aristas);
    // ga_info = GA_config("Archivos_Config/GAconfig_johnson8-4-4", obj_fun_aristas);
    // ga_info = GA_config("Archivos_Config/GAconfig_johnson8-2-4", obj_fun_aristas);
@@ -214,9 +223,9 @@ int obj_fun_aristas(Chrom_Ptr chrom) {
    aristas_clique = N*(N-1)/2;
    densidad_aristas=nedges/(nnodes*(nnodes-1)/2);
    if (aristas_clique==A){
-   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+      chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
    }else{
-    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique)-(100*(aristas_clique - A)/nedges);
+      chrom->fitness = (densidad_aristas*(100*N/nnodes)+2*(100*(aristas_clique - A)/aristas_clique)-0.9*(100*(aristas_clique - A)/nedges))/(N);
    }
    return 0;
 }
