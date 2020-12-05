@@ -108,7 +108,7 @@ pool_size 200
 #-----------------------------------------------------------------------------
 # stop_after convergence
 # stop_after 500
-stop_after 5000 use_convergence
+stop_after 500 use_convergence
 # stop_after 50000 ignore_convergence
 
 #-----------------------------------------------------------------------------

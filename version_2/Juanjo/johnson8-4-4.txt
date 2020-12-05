@@ -1,0 +1,130 @@
+
+(1)
+----------fitnes function-------------------
+   if (aristas_clique==A){
+   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+   }else{
+    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique);
+   }
+
+
+   (fitness: 83)
+
+-------------Number of nodes--------------------------
+Number of nodes: 26 27 32 33 [4]
+No clique 
+---------------Configuration----------------
+datatype bit
+chrom_len 64
+pool_size 200
+stop_after 500 use_convergence
+crossover simple
+x_rate 0.7 
+mu_rate 0.2
+objective maximize
+
+(2)
+----------fitnes function-------------------
+   if (aristas_clique==A){
+   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+   }else{
+    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique)-(100*(aristas_clique - A)/nedges);
+   }
+#se propone añadir otro termino que penalice cuando es cogen pocas aristas.
+
+   (fitness: 900)
+
+-------------Number of nodes--------------------------
+Number of nodes: 7 15 22 29 33 41 45 54 60 [9]
+Clique 
+---------------Configuration----------------
+datatype bit
+chrom_len 70
+pool_size 200
+stop_after 500 use_convergence
+crossover simple
+x_rate 0.7 
+mu_rate 0.2
+objective maximize
+
+(2)
+----------fitnes function-------------------
+   if (aristas_clique==A){
+   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+   }else{
+    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique)-1.5*(100*(aristas_clique - A)/nedges);
+   }
+#se propone añadir otro termino que penalice cuando es cogen pocas aristas.
+
+   (fitness: 900)
+
+-------------Number of nodes--------------------------
+Number of nodes: 1 8 24 28 32 43 45 53 56 [9]
+Clique 
+---------------Configuration----------------
+datatype bit
+chrom_len 70
+pool_size 200
+stop_after 500 use_convergence
+crossover simple
+x_rate 0.7 
+mu_rate 0.2
+objective maximize
+
+
+(3)
+----------fitnes function-------------------
+   if (aristas_clique==A){
+   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+   }else{
+    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique)-1.5*(100*(aristas_clique - A)/nedges);
+   }
+#se propone añadir otro termino que penalice cuando es cogen pocas aristas.
+
+   (fitness: 1200)
+
+-------------Number of nodes--------------------------
+Number of nodes: 3 8 9 23 28 33 36 41 54 60 61 66 [12]
+Clique 
+---------------Configuration----------------
+datatype bit
+chrom_len 70
+pool_size 200
+stop_after 5000 use_convergence
+crossover simple
+x_rate 0.9
+mu_rate 0.2
+objective maximize
+
+
+#se observa que necesitaba mayor número de repeticiones para evolucionar además que con un mayor x_rate se exploraban 
+#nuevas soluciones más remotas.
+
+(4)
+----------fitnes function-------------------
+   if (aristas_clique==A){
+   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+   }else{
+    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique)-(100*(aristas_clique - A)/nedges);
+   }
+#se propone añadir otro termino que penalice cuando es cogen pocas aristas.
+
+   (fitness: 1400)
+
+-------------Number of nodes--------------------------
+Number of nodes: 4 6 10 17 19 27 34 35 42 50 52 59 63 65 [14]
+Clique 
+---------------Configuration----------------
+datatype bit
+chrom_len 70
+pool_size 200
+stop_after 5000 use_convergence
+crossover simple
+x_rate 0.7
+mu_rate 0.4
+objective maximize
+
+
+#con esta iteración se muestra que se necesitan mas repeticiones del algoritmo, se aumenta por tanto la velocidad de especialización
+# a un mu_rate=0.4 y se observa una gran mejora. Esto prueba que en la iteración anterior no hacía falta una exploración más global, 
+sino más específica. (se devuelve el valor de x_rate al original )

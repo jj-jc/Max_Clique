@@ -1,0 +1,27 @@
+
+(1)
+----------fitnes function-------------------
+   if (aristas_clique==A){
+   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+   }else{
+    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique)-(100*(aristas_clique - A)/nedges);
+   }
+#se propone añadir otro termino que penalice cuando es cogen pocas aristas.
+
+   (fitness: 1400)
+
+-------------Number of nodes--------------------------
+Number of nodes: 4 6 10 17 19 27 34 35 42 50 52 59 63 65 [14]
+Clique 
+---------------Configuration----------------
+datatype bit
+chrom_len 70
+pool_size 200
+stop_after 5000 use_convergence
+crossover simple
+x_rate 0.7
+mu_rate 0.4
+objective maximize
+
+
+

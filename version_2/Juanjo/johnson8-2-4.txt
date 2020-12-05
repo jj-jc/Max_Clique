@@ -1,0 +1,26 @@
+
+(1)
+----------fitnes function-------------------
+   if (aristas_clique==A){
+   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+   }else{
+    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique);
+   }
+
+
+    (fitness: 400)
+
+-------------Number of nodes--------------------------
+Number of nodes: 7 10 18 23 [4] 
+clique 
+---------------Configuration----------------
+datatype bit
+chrom_len 64
+pool_size 200
+stop_after 500 use_convergence
+crossover simple
+x_rate 0.7 
+mu_rate 0.2
+objective maximize
+
+#Comentarios: con la fitness (2) del hamming6-4 se obtiene el resultado directamente

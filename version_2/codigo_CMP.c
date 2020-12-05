@@ -40,13 +40,20 @@ int main() {
    int i;
 
    /* Se rellena la matriz "graph" con los datos del fichero y se inicializa nnodes y nedges */
+   read_instance("Instances/p_hat300-1.clq.txt");  //  Se pasa el nombre del archivo de la instancia
+   // read_instance("Instances/johnson8-4-4.clq.txt");  //  Se pasa el nombre del archivo de la instancia
+   // read_instance("Instances/johnson8-2-4.clq.txt");  //  Se pasa el nombre del archivo de la instancia
    // read_instance("Instances/hamming6-4.clq.txt");  //  Se pasa el nombre del archivo de la instancia
-   read_instance("Instances/hamming6-2.clq.txt");  //  Se pasa el nombre del archivo de la instancia
+   // read_instance("Instances/hamming6-2.clq.txt");  //  Se pasa el nombre del archivo de la instancia
    // read_instance("Instances/Toy4.clq.txt");
-   /* Se inicializar el agoritmo genético */
 
+   /* Se inicializa el agoritmo genético */
+
+   ga_info = GA_config("Archivos_Config/GAconfig_p_hat300-1", obj_fun_aristas);
+   // ga_info = GA_config("Archivos_Config/GAconfig_johnson8-4-4", obj_fun_aristas);
+   // ga_info = GA_config("Archivos_Config/GAconfig_johnson8-2-4", obj_fun_aristas);
    // ga_info = GA_config("Archivos_Config/GAconfig_hamming6-4", obj_fun_aristas);
-   ga_info = GA_config("Archivos_Config/GAconfig_hamming6-2", obj_fun_aristas);
+   // ga_info = GA_config("Archivos_Config/GAconfig_hamming6-2", obj_fun_aristas);
    // ga_info = GA_config("Archivos_Config/GAconfig_Toy4", obj_fun_aristas);
 
    /* Se cambia la longitud del chromosoma con la info del fichero*/
@@ -181,6 +188,7 @@ int obj_fun_aristas(Chrom_Ptr chrom) {
    int N = 0; // Numero de nodos del sub-grafo
    int A = 0; // Numero de aristas del sub-grafo
    int aristas_clique=0; // Numero de aristas que debe haber en el sub-grafo para que sea un clique
+   int densidad_aristas=0;
    // int nvertices=0;
    // int naristas=0;
    /* Se halla el número de nodos del sub-grafo escogido y se almacena en la variable 'N' */
@@ -204,14 +212,11 @@ int obj_fun_aristas(Chrom_Ptr chrom) {
 
    /* Se calcula el número de aristas que debe tener un clique de 'N' nodos */
    aristas_clique = N*(N-1)/2;
+   densidad_aristas=nedges/(nnodes*(nnodes-1)/2);
    if (aristas_clique==A){
    chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
    }else{
-    chrom->fitness = 100*N/nnodes-(aristas_clique - A);
-    //hay que buscar la forma de penalizar la diferencia de aristas pero permitiendo que evolucione el algoritmo; es decir 
-    //que no se quede estancado en un máximo local. 
-    //Tambien habría que entender bien cómo inicializar el chromosoma desde cero para comprobar pequeños cliques 
-
+    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique)-(100*(aristas_clique - A)/nedges);
    }
    return 0;
 }
