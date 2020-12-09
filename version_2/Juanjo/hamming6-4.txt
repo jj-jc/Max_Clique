@@ -1,0 +1,55 @@
+(1)
+----------fitnes function-------------------
+   if (aristas_clique==A){
+   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+   }else{
+    chrom->fitness = 100*N/nnodes-(aristas_clique - A);
+   }
+
+
+    (fitness: -64)
+
+-------------Number of nodes--------------------------
+0 1 2 6 9 11 12 14 16 25 37 48 55 56 58 59 60 62 [18]
+No clique
+---------------Configuration----------------
+datatype bit
+chrom_len 64
+pool_size 200
+stop_after 5000 use_convergence
+crossover uniform
+x_rate 0.9 #trataba de que explorara más soluciones, pero aún así se estanca.
+mu_rate 0.2
+objective maximize
+
+#Comentarios: veo que se estanca y como la inicialización de bits a 1
+# es muy alta no consigue reducirlo, el clique de esta instancia es 4
+# habría que buscar la forma de inicializar con pocos bits activos.
+
+(2)
+----------fitnes function-------------------
+   if (aristas_clique==A){
+   chrom->fitness = 100*N;//Trato de benificiar mucho más a los cliques que a los que no lo son.
+   }else{
+    chrom->fitness = densidad_aristas*(100*N/nnodes)+(100*(aristas_clique - A)/aristas_clique);
+   }
+
+
+    (fitness: 100)
+
+-------------Number of nodes--------------------------
+Number of nodes: 11 15 25 29 31 45 59 63 [8]
+no clique
+---------------Configuration----------------
+datatype bit
+chrom_len 64
+pool_size 200
+stop_after 5000 use_convergence
+crossover simple
+x_rate 0.7 
+mu_rate 0.2
+objective maximize
+
+#Comentarios: en esta funcion se pretende que los nodos cuanten menos cuanto menor es la densidad 
+de las aristas ya que hay menos posibilidades de obtener un clique grande.
+También se busca en vez de penalizar, aumentar el fitness si el número de aristas se parecen a las de un clique.
